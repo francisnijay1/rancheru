@@ -4,6 +4,20 @@ namespace: unity
 labels:
   io.rancher.certified: partner
 questions: 
+- variable: volumeNamePrefix
+  label: "Defines a string prepended to each volume created"
+  type: string
+  default: "csivol"
+  required: true
+  group: "General settings (Required)"
+  
+- variable: snapNamePrefix
+  label: "Defines a string prepended to each snapshot created"
+  type: string
+  default: "csi-snap"
+  required: true
+  group: "General settings (Required)"
+  
 - variable: defaultFsType
   label: "Defines Filesystem format"
   type: enum
@@ -12,10 +26,20 @@ questions:
   options:
     - "ext4"
     - "xfs"
-
-- variable: volumeNamePrefix
-  label: "Defines a string prepended to each volume created"
-  type: string
-  default: "csivol"
+    
+- variable: controllerCount
+  label: "Defines Controller count"
+  type: int
   required: true
   group: "General settings (Required)"
+  default: 1
+  
+- variable: certSecretCount
+  label: "Defines Cert secret count"
+  type: int
+  required: true
+  group: "General settings (Required)"
+  default: 1
+
+
+  
